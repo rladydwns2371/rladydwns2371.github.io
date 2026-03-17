@@ -1,1 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevLog | 10년차 개발자의 기술 블로그</title>
+  <meta
+    name="description"
+    content="10년차 개발자의 기술 블로그 메인 페이지. 백엔드, 아키텍처, 데이터베이스, 협업, 실무 경험을 기록합니다."
+  />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #11182d;
+      --bg-card: rgba(17, 24, 45, 0.9);
+      --line: rgba(255, 255, 255, 0.08);
+      --text-main: #ecf2ff;
+      --text-sub: #9aa7c7;
+      --point: #6ea8fe;
+      --point-strong: #8fd3ff;
+      --tag-bg: rgba(110, 168, 254, 0.12);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --max-width: 1280px;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(110, 168, 254, 0.12), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(143, 211, 255, 0.08), transparent 30%),
+        var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #6ea8fe, #8fd3ff);
+      color: #07101f;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-text span:first-child {
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--point-strong);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .profile-card {
+      padding: 26px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #1a233c;
+    }
+
+    .profile-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .profile-role {
+      margin: 4px 0 0;
+      color: var(--text-sub);
+      font-size: 0.93rem;
+    }
+
+    .intro {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .profile-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-size: 0.93rem;
+      color: var(--text-sub);
+    }
+
+    .profile-list strong {
+      color: var(--text-main);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(110, 168, 254, 0.15);
+      color: var(--point-strong);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .main-panel {
+      display: grid;
+      gap: 24px;
+    }
+
+    .headline {
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .headline::before {
+      content: "";
+      position: absolute;
+      inset: auto -50px -50px auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(110, 168, 254, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: var(--point-strong);
+      font-size: 0.8rem;
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .headline h1 {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    .headline p {
+      margin: 0;
+      color: var(--text-sub);
+      max-width: 760px;
+      font-size: 1rem;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-title span {
+      color: var(--text-sub);
+      font-size: 0.92rem;
+    }
+
+    .posts {
+      display: grid;
+      gap: 18px;
+    }
+
+    .post-card {
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .post-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(110, 168, 254, 0.28);
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      color: var(--text-sub);
+      font-size: 0.87rem;
+      margin-bottom: 10px;
+    }
+
+    .post-category {
+      color: var(--point-strong);
+      font-weight: 700;
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .post-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      line-height: 1.35;
+      letter-spacing: -0.03em;
+    }
+
+    .post-card p {
+      margin: 0 0 16px;
+      color: var(--text-sub);
+      font-size: 0.97rem;
+    }
+
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .post-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .post-tags span {
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .read-more {
+      color: var(--point-strong);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .mini-card {
+      padding: 24px;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .mini-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+      color: var(--text-sub);
+      font-size: 0.94rem;
+    }
+
+    .mini-card li strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        position: static;
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 20px 16px 40px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .headline h1 {
+        font-size: 1.7rem;
+      }
+
+      .post-card h3 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a href="#" class="brand">
+        <div class="brand-badge">&lt;/&gt;</div>
+        <div class="brand-text">
+          <span>DevLog</span>
+          <span>10년차 개발자의 실무 기록</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">Posts</a>
+        <a href="#">Architecture</a>
+        <a href="#">Backend</a>
+        <a href="#">About</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <!-- 왼쪽 상단 프로필 -->
+      <aside class="card profile-card">
+        <div class="profile-top">
+          <img
+            class="avatar"
+            src="https://via.placeholder.com/150x150.png?text=Profile"
+            alt="프로필 이미지"
+          />
+          <div>
+            <h2 class="profile-name">용준</h2>
+            <p class="profile-role">Backend Developer · Tech Blogger</p>
+          </div>
+        </div>
+
+        <p class="intro">
+          10년 동안 백엔드 시스템과 데이터베이스, 아키텍처를 다뤄온 개발자.
+          실무에서 검증된 설계, 협업 경험, 트러블슈팅 기록을 정리합니다.
+        </p>
+
+        <ul class="profile-list">
+          <li><strong>관심 분야</strong> Java, Spring, SQL, System Design</li>
+          <li><strong>운영 방향</strong> 이론보다 실무, 코드보다 구조, 경험 기반 기록</li>
+          <li><strong>블로그 키워드</strong> 아키텍처, 성능개선, 협업, 유지보수</li>
+        </ul>
+
+        <div class="stack">
+          <span class="tag">Java</span>
+          <span class="tag">Spring</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">JPA</span>
+          <span class="tag">System Design</span>
+          <span class="tag">GitHub</span>
+        </div>
+      </aside>
+
+      <!-- 오른쪽 메인 콘텐츠 -->
+      <section class="main-panel">
+        <section class="card headline">
+          <span class="eyebrow">main_page.tsx → static index.html mood</span>
+          <h1>기술은 결국, 오래 운영되는 구조로 증명된다.</h1>
+          <p>
+            이 블로그는 단순한 문법 정리가 아니라, 실제 서비스 운영과 협업 과정에서
+            마주친 문제를 어떻게 분석하고 해결했는지 기록하는 공간입니다.
+          </p>
+        </section>
+
+        <section>
+          <div class="section-title">
+            <h2>Latest Posts</h2>
+            <span>실무 중심 기술 아카이브</span>
+          </div>
+
+          <div class="posts">
+            <article class="card post-card">
+              <div class="post-meta">
+                <span class="post-category">BACKEND</span>
+                <span>2026.03.17</span>
+                <span>8 min read</span>
+              </div>
+              <h3>Spring 서비스 계층을 단단하게 설계하는 방법</h3>
+              <p>
+                Controller, Service, Repository 역할을 명확히 분리하고,
+                유지보수 가능한 백엔드 구조를 만드는 기준을 정리합니다.
+              </p>
+              <div class="post-footer">
+                <div class="post-tags">
+                  <span>Spring</span>
+                  <span>Layered Architecture</span>
+                  <span>Clean Code</span>
+                </div>
+                <a href="#" class="read-more">Read Article →</a>
+              </div>
+            </article>
+
+            <article class="card post-card">
+              <div class="post-meta">
+                <span class="post-category">DATABASE</span>
+                <span>2026.03.10</span>
+                <span>11 min read</span>
+              </div>
+              <h3>MySQL 성능 저하를 부르는 쿼리 패턴 5가지</h3>
+              <p>
+                실무에서 자주 등장하는 느린 쿼리의 원인을 사례 중심으로 정리하고,
+                인덱스와 실행계획 관점에서 개선 포인트를 설명합니다.
+              </p>
+              <div class="post-footer">
+                <div class="post-tags">
+                  <span>MySQL</span>
+                  <span>Index</span>
+                  <span>Query Tuning</span>
+                </div>
+                <a href="#" class="read-more">Read Article →</a>
+              </div>
+            </article>
+
+            <article class="card post-card">
+              <div class="post-meta">
+                <span class="post-category">COLLABORATION</span>
+                <span>2026.03.03</span>
+                <span>6 min read</span>
+              </div>
+              <h3>GitHub 협업에서 코드보다 중요한 리뷰 문화</h3>
+              <p>
+                좋은 PR은 단순히 머지되는 코드가 아니라,
+                팀의 의사결정과 맥락을 남기는 문서라는 관점에서 정리한 글입니다.
+              </p>
+              <div class="post-footer">
+                <div class="post-tags">
+                  <span>GitHub</span>
+                  <span>Code Review</span>
+                  <span>Team Culture</span>
+                </div>
+                <a href="#" class="read-more">Read Article →</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="card mini-card">
+            <h3>Featured Topics</h3>
+            <ul>
+              <li>
+                <strong>System Design</strong>
+                확장 가능한 구조, 책임 분리, 장애 대응 설계
+              </li>
+              <li>
+                <strong>Backend Practical</strong>
+                Java/Spring 기반 실무 개발 패턴과 예외 처리
+              </li>
+              <li>
+                <strong>Database Optimization</strong>
+                SQL 튜닝, 인덱싱, 실행계획 해석
+              </li>
+            </ul>
+          </div>
+
+          <div class="card mini-card">
+            <h3>Blog Principle</h3>
+            <ul>
+              <li>
+                <strong>문법보다 설계</strong>
+                단편적인 지식보다 구조적 사고를 우선
+              </li>
+              <li>
+                <strong>이론보다 경험</strong>
+                실제 운영과 유지보수 경험 기반 정리
+              </li>
+              <li>
+                <strong>기록보다 자산화</strong>
+                재사용 가능한 인사이트 중심 아카이빙
+              </li>
+            </ul>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 DevLog. All rights reserved.</span>
+      <span>Designed for a static developer blog main page.</span>
+    </footer>
+  </div>
+</body>
+</html>
