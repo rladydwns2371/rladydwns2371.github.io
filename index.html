@@ -3,95 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevLog | 10년차 개발자의 기술 블로그</title>
-  <meta
-    name="description"
-    content="10년차 개발자의 기술 블로그 메인 페이지. 백엔드, 아키텍처, 데이터베이스, 협업, 실무 경험을 기록합니다."
-  />
+  <title>Kim YongJun | Data, ML & Backend Portfolio</title>
+  <meta name="description" content="Kim YongJun portfolio - Data Analysis, Machine Learning, Medical Intelligence, and Backend Engineering." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #11182d;
-      --bg-card: rgba(17, 24, 45, 0.9);
-      --line: rgba(255, 255, 255, 0.08);
-      --text-main: #ecf2ff;
-      --text-sub: #9aa7c7;
-      --point: #6ea8fe;
-      --point-strong: #8fd3ff;
-      --tag-bg: rgba(110, 168, 254, 0.12);
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
-      --max-width: 1280px;
+      --bg: #07111f;
+      --bg-soft: #0c182c;
+      --bg-card: rgba(12, 24, 44, 0.86);
+      --bg-card-strong: rgba(16, 31, 58, 0.95);
+      --line: rgba(255,255,255,0.08);
+      --line-strong: rgba(110, 168, 254, 0.25);
+      --text-main: #eef4ff;
+      --text-sub: #9fb0cf;
+      --point: #7cb5ff;
+      --point-strong: #9bdeff;
+      --accent: #7df0d2;
+      --danger-soft: rgba(255, 179, 179, 0.12);
+      --warn-soft: rgba(255, 220, 154, 0.12);
+      --tag-bg: rgba(124, 181, 255, 0.12);
+      --shadow: 0 24px 50px rgba(0,0,0,0.34);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --max-width: 1320px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(110, 168, 254, 0.12), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(143, 211, 255, 0.08), transparent 30%),
-        var(--bg);
       color: var(--text-main);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at top right, rgba(124,181,255,0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(125,240,210,0.08), transparent 24%),
+        linear-gradient(180deg, #07111f 0%, #091527 100%);
+      line-height: 1.65;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .wrap {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 32px 24px 60px;
+      padding: 28px 22px 64px;
     }
 
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
       gap: 20px;
+      margin-bottom: 28px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 14px 0;
+      backdrop-filter: blur(12px);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .brand-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #6ea8fe, #8fd3ff);
-      color: #07101f;
-      font-family: Consolas, Monaco, monospace;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      color: #07111f;
+      background: linear-gradient(135deg, var(--point), var(--accent));
       box-shadow: var(--shadow);
+      font-family: Consolas, Monaco, monospace;
+      font-weight: 800;
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .brand-text span:first-child {
@@ -100,112 +97,161 @@
     }
 
     .brand-text span:last-child {
-      font-size: 0.8rem;
-      color: var(--text-sub);
+      font-size: 0.83rem;
       font-weight: 500;
+      color: var(--text-sub);
     }
 
     .nav {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
     }
 
     .nav a {
+      font-size: 0.94rem;
       color: var(--text-sub);
-      font-size: 0.95rem;
       transition: 0.2s ease;
     }
 
-    .nav a:hover {
-      color: var(--point-strong);
-    }
+    .nav a:hover { color: var(--point-strong); }
 
     .hero {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 340px minmax(0, 1fr);
       gap: 24px;
       align-items: start;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     .card {
       background: var(--bg-card);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(12px);
     }
 
     .profile-card {
-      padding: 26px;
       position: sticky;
-      top: 24px;
+      top: 86px;
+      padding: 28px;
     }
 
     .profile-top {
       display: flex;
-      align-items: center;
       gap: 16px;
-      margin-bottom: 20px;
+      align-items: center;
+      margin-bottom: 18px;
     }
 
     .avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: #1a233c;
+      width: 84px;
+      height: 84px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #07111f;
+      background: linear-gradient(135deg, var(--point), var(--accent));
+      box-shadow: var(--shadow);
     }
 
     .profile-name {
-      font-size: 1.2rem;
-      font-weight: 800;
       margin: 0;
-      letter-spacing: -0.03em;
+      font-size: 1.3rem;
+      letter-spacing: -0.04em;
     }
 
     .profile-role {
       margin: 4px 0 0;
       color: var(--text-sub);
-      font-size: 0.93rem;
+      font-size: 0.96rem;
+    }
+
+    .school {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-sub);
+      font-size: 0.84rem;
     }
 
     .intro {
+      margin: 18px 0 22px;
       color: var(--text-sub);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
+      font-size: 0.96rem;
     }
 
     .profile-list {
+      list-style: none;
       margin: 0;
       padding: 0;
-      list-style: none;
       display: grid;
       gap: 10px;
-      font-size: 0.93rem;
       color: var(--text-sub);
+      font-size: 0.94rem;
     }
 
     .profile-list strong {
       color: var(--text-main);
-      font-weight: 700;
+      display: inline-block;
+      min-width: 70px;
       margin-right: 6px;
+    }
+
+    .contact-box {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.9rem;
+    }
+
+    .contact-link span:first-child { color: var(--text-sub); }
+    .contact-link span:last-child {
+      color: var(--text-main);
+      word-break: break-all;
+      text-align: right;
+    }
+
+    .stack-group {
+      margin-top: 22px;
+    }
+
+    .stack-group h3 {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
     }
 
     .stack {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 20px;
     }
 
     .tag {
       padding: 7px 11px;
       border-radius: 999px;
       background: var(--tag-bg);
-      border: 1px solid rgba(110, 168, 254, 0.15);
+      border: 1px solid rgba(124,181,255,0.14);
       color: var(--point-strong);
       font-size: 0.82rem;
       font-weight: 600;
@@ -213,11 +259,11 @@
 
     .main-panel {
       display: grid;
-      gap: 24px;
+      gap: 22px;
     }
 
     .headline {
-      padding: 30px;
+      padding: 34px;
       position: relative;
       overflow: hidden;
     }
@@ -225,392 +271,823 @@
     .headline::before {
       content: "";
       position: absolute;
-      inset: auto -50px -50px auto;
+      inset: auto -30px -40px auto;
       width: 180px;
       height: 180px;
-      background: radial-gradient(circle, rgba(110, 168, 254, 0.18), transparent 70%);
+      background: radial-gradient(circle, rgba(124,181,255,0.18), transparent 68%);
       pointer-events: none;
     }
 
     .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 10px;
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 6px 11px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      color: var(--point-strong);
       font-size: 0.8rem;
+      color: var(--point-strong);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
       font-family: Consolas, Monaco, monospace;
     }
 
     .headline h1 {
-      margin: 0 0 10px;
-      font-size: 2.2rem;
+      margin: 0 0 12px;
+      font-size: 2.3rem;
       line-height: 1.2;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.05em;
+      max-width: 820px;
     }
 
     .headline p {
       margin: 0;
       color: var(--text-sub);
-      max-width: 760px;
       font-size: 1rem;
+      max-width: 820px;
     }
 
-    .section-title {
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .stat-card span {
+      color: var(--text-sub);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      scroll-margin-top: 100px;
+    }
+
+    .section-head {
       display: flex;
       justify-content: space-between;
       align-items: end;
       gap: 16px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .section-title h2 {
+    .section-head h2 {
       margin: 0;
-      font-size: 1.25rem;
-      letter-spacing: -0.03em;
+      font-size: 1.38rem;
+      letter-spacing: -0.04em;
     }
 
-    .section-title span {
-      color: var(--text-sub);
-      font-size: 0.92rem;
-    }
-
-    .posts {
-      display: grid;
-      gap: 18px;
-    }
-
-    .post-card {
-      padding: 24px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .post-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(110, 168, 254, 0.28);
-    }
-
-    .post-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      color: var(--text-sub);
-      font-size: 0.87rem;
-      margin-bottom: 10px;
-    }
-
-    .post-category {
-      color: var(--point-strong);
-      font-weight: 700;
-      font-family: Consolas, Monaco, monospace;
-    }
-
-    .post-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.35rem;
-      line-height: 1.35;
-      letter-spacing: -0.03em;
-    }
-
-    .post-card p {
-      margin: 0 0 16px;
-      color: var(--text-sub);
-      font-size: 0.97rem;
-    }
-
-    .post-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .post-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .post-tags span {
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      color: var(--text-sub);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .read-more {
-      color: var(--point-strong);
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .bottom-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .mini-card {
-      padding: 24px;
-    }
-
-    .mini-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-    }
-
-    .mini-card ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 12px;
+    .section-head p {
+      margin: 6px 0 0;
       color: var(--text-sub);
       font-size: 0.94rem;
     }
 
-    .mini-card li strong {
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .filter-chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-sub);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .filter-chip.active,
+    .filter-chip:hover {
       color: var(--text-main);
-      display: block;
-      margin-bottom: 3px;
+      border-color: var(--line-strong);
+      background: rgba(124,181,255,0.12);
+    }
+
+    .focus-grid,
+    .project-grid,
+    .resource-grid,
+    .backend-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .focus-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resource-grid,
+    .backend-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .focus-card,
+    .project-card,
+    .resource-card,
+    .backend-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--bg-card-strong);
+      transition: 0.2s ease;
+    }
+
+    .focus-card:hover,
+    .project-card:hover,
+    .resource-card:hover,
+    .backend-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+    }
+
+    .mini-eyebrow {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid var(--line);
+      color: var(--point-strong);
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 12px;
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .project-status {
+      flex-shrink: 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-sub);
+    }
+
+    .status-ready {
+      color: #9bdeff;
+      background: rgba(123, 206, 255, 0.12);
+      border-color: rgba(123,206,255,0.28);
+    }
+
+    .status-limited {
+      color: #ffd794;
+      background: var(--warn-soft);
+      border-color: rgba(255,215,148,0.24);
+    }
+
+    .project-card h3,
+    .focus-card h3,
+    .resource-card h3,
+    .backend-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      line-height: 1.35;
+      letter-spacing: -0.03em;
+    }
+
+    .project-card p,
+    .focus-card p,
+    .resource-card p,
+    .backend-card p {
+      margin: 0 0 16px;
+      color: var(--text-sub);
+      font-size: 0.94rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .project-tags span,
+    .resource-meta span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      border: 1px solid var(--line);
+      color: var(--text-sub);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .project-links,
+    .resource-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(124,181,255,0.18), rgba(125,240,210,0.12));
+      color: var(--text-main);
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .note-box {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .note-box h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .note-box ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+    }
+
+    .note-box li::before {
+      content: "•";
+      color: var(--point-strong);
+      margin-right: 8px;
+    }
+
+    .coming {
+      border: 1px dashed rgba(124,181,255,0.28);
+      background: linear-gradient(180deg, rgba(124,181,255,0.08), rgba(255,255,255,0.02));
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 42px;
       padding-top: 24px;
       border-top: 1px solid var(--line);
       color: var(--text-sub);
-      font-size: 0.9rem;
       display: flex;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 1024px) {
+    .hidden-card { display: none; }
+
+    @media (max-width: 1120px) {
       .hero {
         grid-template-columns: 1fr;
       }
-
       .profile-card {
         position: static;
       }
-
-      .bottom-grid {
+      .focus-grid,
+      .project-grid,
+      .resource-grid,
+      .backend-grid,
+      .two-column,
+      .stats {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 640px) {
-      .wrap {
-        padding: 20px 16px 40px;
-      }
-
+    @media (max-width: 720px) {
+      .wrap { padding: 18px 14px 40px; }
       .topbar {
+        position: static;
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .headline h1 {
-        font-size: 1.7rem;
-      }
-
-      .post-card h3 {
-        font-size: 1.15rem;
-      }
+      .headline { padding: 26px; }
+      .headline h1 { font-size: 1.8rem; }
+      .project-grid,
+      .resource-grid,
+      .backend-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <a href="#" class="brand">
-        <div class="brand-badge">&lt;/&gt;</div>
+      <a href="#top" class="brand">
+        <div class="brand-badge">ML</div>
         <div class="brand-text">
-          <span>DevLog</span>
-          <span>10년차 개발자의 실무 기록</span>
+          <span>Kim YongJun</span>
+          <span>Data Analysis · Machine Learning · Backend</span>
         </div>
       </a>
 
       <nav class="nav">
-        <a href="#">Home</a>
-        <a href="#">Posts</a>
-        <a href="#">Architecture</a>
-        <a href="#">Backend</a>
-        <a href="#">About</a>
+        <a href="#about">About</a>
+        <a href="#projects">Data & ML</a>
+        <a href="#resources">Reports</a>
+        <a href="#backend">Backend</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main class="hero">
-      <!-- 왼쪽 상단 프로필 -->
+    <main class="hero" id="top">
       <aside class="card profile-card">
         <div class="profile-top">
-          <img
-            class="avatar"
-            src="https://via.placeholder.com/150x150.png?text=Profile"
-            alt="프로필 이미지"
-          />
+          <div class="avatar">KY</div>
           <div>
-            <h2 class="profile-name">용준</h2>
-            <p class="profile-role">Backend Developer · Tech Blogger</p>
+            <h2 class="profile-name">Kim YongJun</h2>
+            <p class="profile-role">Machine Learning Engineer Aspirant</p>
           </div>
         </div>
 
+        <span class="school">Department of Big Data and Medical Convergence, Eulji University</span>
+
         <p class="intro">
-          10년 동안 백엔드 시스템과 데이터베이스, 아키텍처를 다뤄온 개발자.
-          실무에서 검증된 설계, 협업 경험, 트러블슈팅 기록을 정리합니다.
+          Hello, I’m Kim YongJun. I have worked on a range of projects across data analysis,
+          machine learning, optimization, spatial analytics, and medical AI. To turn these models
+          into deployable services, I am currently strengthening my backend engineering capabilities.
         </p>
 
         <ul class="profile-list">
-          <li><strong>관심 분야</strong> Java, Spring, SQL, System Design</li>
-          <li><strong>운영 방향</strong> 이론보다 실무, 코드보다 구조, 경험 기반 기록</li>
-          <li><strong>블로그 키워드</strong> 아키텍처, 성능개선, 협업, 유지보수</li>
+          <li><strong>Goal</strong> ML Engineer who can connect modeling, interpretation, and service implementation</li>
+          <li><strong>Focus</strong> Healthcare data, predictive modeling, optimization, BI, and backend expansion</li>
+          <li><strong>Strength</strong> Project-based learning across Python, Java, SQL, and model evaluation workflows</li>
         </ul>
 
-        <div class="stack">
-          <span class="tag">Java</span>
-          <span class="tag">Spring</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">JPA</span>
-          <span class="tag">System Design</span>
-          <span class="tag">GitHub</span>
+        <div class="stack-group">
+          <h3>Core Stack</h3>
+          <div class="stack">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Spring</span>
+            <span class="tag">IntelliJ</span>
+            <span class="tag">GitHub</span>
+          </div>
+        </div>
+
+        <div class="contact-box" id="contact">
+          <a class="contact-link" href="mailto:gimyongjun796@gmail.com">
+            <span>Email</span>
+            <span>gimyongjun796@gmail.com</span>
+          </a>
+          <a class="contact-link" href="tel:01059332371">
+            <span>Phone</span>
+            <span>010-5933-2371</span>
+          </a>
         </div>
       </aside>
 
-      <!-- 오른쪽 메인 콘텐츠 -->
       <section class="main-panel">
-        <section class="card headline">
-          <span class="eyebrow">main_page.tsx → static index.html mood</span>
-          <h1>기술은 결국, 오래 운영되는 구조로 증명된다.</h1>
+        <section class="card headline section" id="about">
+          <span class="eyebrow">Portfolio / Data-first, service-oriented</span>
+          <h1>데이터 분석부터 예측 모델링, 그리고 서비스 구현까지 연결하는 포트폴리오</h1>
           <p>
-            이 블로그는 단순한 문법 정리가 아니라, 실제 서비스 운영과 협업 과정에서
-            마주친 문제를 어떻게 분석하고 해결했는지 기록하는 공간입니다.
+            의료 데이터, 공공 데이터, 시계열 오차 보정, 위성 기반 공간 분석, Tableau 기반 BI 시각화 등
+            서로 다른 문제를 데이터로 해석하고 모델링해 왔습니다. 이 포트폴리오는 Data & ML 영역과
+            향후 추가될 Backend Engineering 영역을 명확히 분리하여 보여주도록 설계했습니다.
           </p>
         </section>
 
-        <section>
-          <div class="section-title">
-            <h2>Latest Posts</h2>
-            <span>실무 중심 기술 아카이브</span>
+        <section class="stats">
+          <article class="stat-card card">
+            <strong>9</strong>
+            <span>Data / ML / BI projects currently organized for portfolio presentation</span>
+          </article>
+          <article class="stat-card card">
+            <strong>3+</strong>
+            <span>Healthcare-oriented projects including medical prediction and conference work</span>
+          </article>
+          <article class="stat-card card">
+            <strong>Next</strong>
+            <span>Backend section prepared as a separate block for GitHub-based service projects</span>
+          </article>
+        </section>
+
+        <section class="section panel card">
+          <div class="section-head">
+            <div>
+              <h2>What this portfolio emphasizes</h2>
+              <p>기술 나열보다 문제 정의, 데이터 해석, 모델 선택, 결과 전달 방식을 보여주는 데 초점을 맞췄습니다.</p>
+            </div>
+          </div>
+          <div class="focus-grid">
+            <article class="focus-card">
+              <span class="mini-eyebrow">01 / Problem Framing</span>
+              <h3>도메인 문제를 분석 가능한 형태로 구조화</h3>
+              <p>의료, 공공, 환경, 교육 데이터를 각각 다른 목적에 맞게 재구성하고, EDA와 가설 기반 분석으로 출발합니다.</p>
+            </article>
+            <article class="focus-card">
+              <span class="mini-eyebrow">02 / Modeling</span>
+              <h3>모델 성능뿐 아니라 해석 가능성과 적용성 고려</h3>
+              <p>분류 모델 비교, Optuna 기반 튜닝, 임계값 및 평가 지표 해석, CNN 기반 이미지 분류 등 다양한 접근을 포함합니다.</p>
+            </article>
+            <article class="focus-card">
+              <span class="mini-eyebrow">03 / Deployment Mindset</span>
+              <h3>분석 결과를 서비스로 연결하기 위한 확장성</h3>
+              <p>현재는 백엔드 부트캠프를 통해 서비스 구현 역량을 강화 중이며, ML 결과물을 실제 사용자 경험으로 연결하는 방향을 지향합니다.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="projects">
+          <div class="section-head">
+            <div>
+              <h2>Data Analysis & Machine Learning Projects</h2>
+              <p>아래 섹션은 Data/ML 중심으로 구성되어 있으며, Backend 프로젝트는 이후 별도 섹션에 확장됩니다.</p>
+            </div>
           </div>
 
-          <div class="posts">
-            <article class="card post-card">
-              <div class="post-meta">
-                <span class="post-category">BACKEND</span>
-                <span>2026.03.17</span>
-                <span>8 min read</span>
-              </div>
-              <h3>Spring 서비스 계층을 단단하게 설계하는 방법</h3>
-              <p>
-                Controller, Service, Repository 역할을 명확히 분리하고,
-                유지보수 가능한 백엔드 구조를 만드는 기준을 정리합니다.
-              </p>
-              <div class="post-footer">
-                <div class="post-tags">
-                  <span>Spring</span>
-                  <span>Layered Architecture</span>
-                  <span>Clean Code</span>
+          <div class="filters">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="healthcare">Healthcare</button>
+            <button class="filter-chip" data-filter="prediction">Prediction</button>
+            <button class="filter-chip" data-filter="optimization">Optimization</button>
+            <button class="filter-chip" data-filter="bi">BI / Visualization</button>
+            <button class="filter-chip" data-filter="spatial">Spatial / Satellite</button>
+            <button class="filter-chip" data-filter="vision">Vision / CNN</button>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card card" data-category="healthcare prediction">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Healthcare / ML</span>
+                  <h3>Medical Data Intelligence</h3>
                 </div>
-                <a href="#" class="read-more">Read Article →</a>
+                <span class="project-status status-ready">Source checked</span>
+              </div>
+              <p>
+                환자 정보 기반 EDA, 진단 결과 예측, 증상-질병 연관 규칙 분석을 하나의 흐름으로 구성한 프로젝트입니다.
+                의료 데이터 이해에서 시작해 분류 모델 비교와 질병 예측 프로그램 개념까지 확장했습니다.
+              </p>
+              <div class="project-tags">
+                <span>Patient EDA</span>
+                <span>Diagnosis Prediction</span>
+                <span>Association Rules</span>
+                <span>Healthcare AI</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1bAK2C-DXXApxrGq87rQFj8YwB2cbJ-JJ?usp=sharing">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://docs.google.com/presentation/d/1o6JD-yIhViVuYDtqhWneVIWcnvRKsDlO/edit?slide=id.p1#slide=id.p1">Open PPT</a>
               </div>
             </article>
 
-            <article class="card post-card">
-              <div class="post-meta">
-                <span class="post-category">DATABASE</span>
-                <span>2026.03.10</span>
-                <span>11 min read</span>
-              </div>
-              <h3>MySQL 성능 저하를 부르는 쿼리 패턴 5가지</h3>
-              <p>
-                실무에서 자주 등장하는 느린 쿼리의 원인을 사례 중심으로 정리하고,
-                인덱스와 실행계획 관점에서 개선 포인트를 설명합니다.
-              </p>
-              <div class="post-footer">
-                <div class="post-tags">
-                  <span>MySQL</span>
-                  <span>Index</span>
-                  <span>Query Tuning</span>
+            <article class="project-card card" data-category="prediction optimization">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Forecast / Optimization</span>
+                  <h3>Weather Forecast Error Correction System</h3>
                 </div>
-                <a href="#" class="read-more">Read Article →</a>
+                <span class="project-status status-limited">Asset link limited</span>
+              </div>
+              <p>
+                기상 예보 오차를 보정하기 위한 데이터 분석 및 모델링 프로젝트입니다.
+                EDA, Optuna 기반 튜닝, 성능 평가 흐름을 중심으로 재구성했으며, 추후 핵심 시각자료를 연결하기 좋은 구조로 배치했습니다.
+              </p>
+              <div class="project-tags">
+                <span>EDA</span>
+                <span>Optuna</span>
+                <span>Error Correction</span>
+                <span>Performance Evaluation</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1KOOse4qQffando-MKV_41TU9QKkjUgoI">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/15lEVY50UpphcyoToN-2Y1ZjLw38fmMew/edit">Open PPT</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1TxTUfLMk-7LpvCToYhDb70-o5Ys6gXwY/edit">Open Report</a>
               </div>
             </article>
 
-            <article class="card post-card">
-              <div class="post-meta">
-                <span class="post-category">COLLABORATION</span>
-                <span>2026.03.03</span>
-                <span>6 min read</span>
-              </div>
-              <h3>GitHub 협업에서 코드보다 중요한 리뷰 문화</h3>
-              <p>
-                좋은 PR은 단순히 머지되는 코드가 아니라,
-                팀의 의사결정과 맥락을 남기는 문서라는 관점에서 정리한 글입니다.
-              </p>
-              <div class="post-footer">
-                <div class="post-tags">
-                  <span>GitHub</span>
-                  <span>Code Review</span>
-                  <span>Team Culture</span>
+            <article class="project-card card" data-category="prediction">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Customer Analytics</span>
+                  <h3>Telecom Customer Churn Prediction</h3>
                 </div>
-                <a href="#" class="read-more">Read Article →</a>
+                <span class="project-status status-ready">Source checked</span>
+              </div>
+              <p>
+                통신사 고객 이탈 예측을 위해 데이터 정제, 시각화, 모델 비교, 파라미터 튜닝을 수행한 분류 프로젝트입니다.
+                Logistic Regression을 중심으로 성능 개선과 실제 예측 테스트까지 이어졌습니다.
+              </p>
+              <div class="project-tags">
+                <span>Logistic Regression</span>
+                <span>Orange</span>
+                <span>EDA</span>
+                <span>Churn Prediction</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1ZJM_RDJMEcrbGpuuybzZtV01wINsoSDJ">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://docs.google.com/presentation/d/1pDodwrVe3ryr-wyvl7RKNpkMceRXXQ35/edit?slide=id.p1#slide=id.p1">Open PPT</a>
+              </div>
+            </article>
+
+            <article class="project-card card" data-category="bi spatial">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Public Data / Business Insight</span>
+                  <h3>Public Mobility Business Data Analysis</h3>
+                </div>
+                <span class="project-status status-ready">Source checked</span>
+              </div>
+              <p>
+                공공자전거 대여소, 이용 정보, 자전거도로 데이터를 통합하여 지역별 사업 가능성을 도출한 분석 프로젝트입니다.
+                공급량 대비 수요량과 인프라를 함께 고려하는 지표 설계를 포트폴리오에 반영했습니다.
+              </p>
+              <div class="project-tags">
+                <span>Mobility</span>
+                <span>Public Bicycle</span>
+                <span>Data Integration</span>
+                <span>Regional Insight</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1Unu1FAs6EqvRhc3EJ1m4ZUOqvlTezss0">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://docs.google.com/presentation/d/11ryEbkEiHZXtH6wQ1x-7Pdu1QWmvAPxX/edit?slide=id.p1#slide=id.p1">Open PPT</a>
+              </div>
+            </article>
+
+            <article class="project-card card" data-category="healthcare optimization">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Healthcare Policy / Optimization</span>
+                  <h3>Medical Waste Treatment Optimization</h3>
+                </div>
+                <span class="project-status status-limited">Asset link limited</span>
+              </div>
+              <p>
+                지역별 배출량, 처리시설 수, 처리 용량을 종합해 의료폐기물 처리체계의 최적화를 검토한 프로젝트입니다.
+                정책·인프라·수요 데이터를 연결하는 분석형 포트폴리오 사례로 구성했습니다.
+              </p>
+              <div class="project-tags">
+                <span>Optimization</span>
+                <span>Facility Analysis</span>
+                <span>Capacity Planning</span>
+                <span>Medical Waste</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1oT9G4t75bPe2YWDPF-GhNAe6GqfnU_xa">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1ugCCH9wzTlMEVi7AYErx-H1owq5mTCkE/edit">Open PPT</a>
+              </div>
+            </article>
+
+            <article class="project-card card" data-category="optimization bi">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Policy Evaluation / Public Data</span>
+                  <h3>Effect of RFID Facilities on Food Waste Emissions</h3>
+                </div>
+                <span class="project-status status-limited">Asset link limited</span>
+              </div>
+              <p>
+                RFID 기반 음식물쓰레기 관리체계의 효과를 데이터와 제도 해석을 통해 평가한 프로젝트입니다.
+                단순 통계 요약을 넘어 정책성과 관리 시스템 해석을 함께 담을 수 있도록 구조화했습니다.
+              </p>
+              <div class="project-tags">
+                <span>RFID</span>
+                <span>Policy Analysis</span>
+                <span>Regulation</span>
+                <span>Food Waste</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1ZnLeye3Gtz_DcwOR0f5D0RTHBJrpM0H9">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1331peWfmzQjj65JSkWdHlrSYukNXdo3j/edit">Open PPT / Report</a>
+              </div>
+            </article>
+
+            <article class="project-card card" data-category="bi">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">BI / Tableau</span>
+                  <h3>College Admissions Guide Using BI Tools</h3>
+                </div>
+                <span class="project-status status-ready">Source checked</span>
+              </div>
+              <p>
+                전문대학 입시 데이터를 정리하고 Tableau 기반 대시보드로 취업률, 경쟁률, 성적 순위, 장학금/등록금 비교를 시각화한 BI 프로젝트입니다.
+                질문 중심의 대시보드 구성 경험을 보여주는 작업입니다.
+              </p>
+              <div class="project-tags">
+                <span>Tableau</span>
+                <span>Dashboard</span>
+                <span>Admissions Data</span>
+                <span>BI</span>
+              </div>
+              <div class="project-links">
+                <a class="btn" target="_blank" rel="noreferrer" href="https://docs.google.com/presentation/d/1kyLkgdGkK2McIviBobAI5PfERg4VdK2c/edit?slide=id.p1#slide=id.p1">Open PPT</a>
+              </div>
+            </article>
+
+            <article class="project-card card" data-category="spatial">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Satellite / Spatial Analysis</span>
+                  <h3>Industrial Complex Pollution Tracking System</h3>
+                </div>
+                <span class="project-status status-limited">Asset link limited</span>
+              </div>
+              <p>
+                위성 데이터를 활용해 산업단지 오염원을 추적하고 공간 분석 관점에서 해석한 프로젝트입니다.
+                환경 데이터와 geospatial reasoning을 포트폴리오의 차별화 포인트로 배치했습니다.
+              </p>
+              <div class="project-tags">
+                <span>Satellite Data</span>
+                <span>Pollution Tracking</span>
+                <span>Spatial Analysis</span>
+                <span>Environment</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" target="_blank" rel="noreferrer" href="https://colab.research.google.com/drive/1jspyBFH3qgn78tE2xtpgBSFZy3Nv28bz#scrollTo=8BREP7RiSRwd">Open Colab</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1CBUMaUtNRmKxHUYIIqQ6dNfLTsNFqwYl/view">Open PPT 1</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/17flm9OqqeOFmMUT5LLNVMLGuc4-gmCmL/view">Open PPT 2</a>
+              </div>
+            </article>
+
+            <article class="project-card card" data-category="healthcare vision">
+              <div class="project-top">
+                <div>
+                  <span class="mini-eyebrow">Deep Learning / Conference</span>
+                  <h3>CNN-Based Pneumonia X-ray Classification</h3>
+                </div>
+                <span class="project-status status-limited">Asset link limited</span>
+              </div>
+              <p>
+                폐렴 X-ray 분류를 위해 CNN 아키텍처 비교, 픽셀 정규화, 데이터 증강을 적용한 연구·발표 프로젝트입니다.
+                의료 영상 분류와 class imbalance 대응 경험을 보여주는 대표적인 딥러닝 사례입니다.
+              </p>
+              <div class="project-tags">
+                <span>CNN</span>
+                <span>X-ray</span>
+                <span>Data Augmentation</span>
+                <span>Conference Paper</span>
+              </div>
+              <div class="project-links">
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1ItGyJHhtb9BGsOQPjDbDssW-JPiG63rA/edit">Open Presentation</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1nR7LO27r4QNYYnZKb1hAjyoUBlBsXybn/edit">Open Poster</a>
               </div>
             </article>
           </div>
         </section>
 
-        <section class="bottom-grid">
-          <div class="card mini-card">
-            <h3>Featured Topics</h3>
-            <ul>
-              <li>
-                <strong>System Design</strong>
-                확장 가능한 구조, 책임 분리, 장애 대응 설계
-              </li>
-              <li>
-                <strong>Backend Practical</strong>
-                Java/Spring 기반 실무 개발 패턴과 예외 처리
-              </li>
-              <li>
-                <strong>Database Optimization</strong>
-                SQL 튜닝, 인덱싱, 실행계획 해석
-              </li>
-            </ul>
+        <section class="section card panel" id="resources">
+          <div class="section-head">
+            <div>
+              <h2>Reports, Presentations & Research Output</h2>
+              <p>프로젝트 코드만이 아니라 발표자료, 보고서, 연구 산출물까지 함께 보여줄 수 있도록 분리된 영역입니다.</p>
+            </div>
           </div>
 
-          <div class="card mini-card">
-            <h3>Blog Principle</h3>
-            <ul>
-              <li>
-                <strong>문법보다 설계</strong>
-                단편적인 지식보다 구조적 사고를 우선
-              </li>
-              <li>
-                <strong>이론보다 경험</strong>
-                실제 운영과 유지보수 경험 기반 정리
-              </li>
-              <li>
-                <strong>기록보다 자산화</strong>
-                재사용 가능한 인사이트 중심 아카이빙
-              </li>
-            </ul>
+          <div class="resource-grid">
+            <article class="resource-card">
+              <span class="mini-eyebrow">Presentation</span>
+              <h3>Slide-driven project documentation</h3>
+              <p>Medical Data Intelligence, Telecom Churn, Public Mobility, College Admissions BI 프로젝트는 발표자료 기반으로 핵심 흐름을 정리할 수 있도록 설계했습니다.</p>
+              <div class="resource-links">
+                <a class="btn" target="_blank" rel="noreferrer" href="https://docs.google.com/presentation/d/1o6JD-yIhViVuYDtqhWneVIWcnvRKsDlO/edit?slide=id.p1#slide=id.p1">Medical Slides</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://docs.google.com/presentation/d/1pDodwrVe3ryr-wyvl7RKNpkMceRXXQ35/edit?slide=id.p1#slide=id.p1">Churn Slides</a>
+              </div>
+            </article>
+
+            <article class="resource-card">
+              <span class="mini-eyebrow">Research</span>
+              <h3>Conference & academic communication</h3>
+              <p>의료 영상 분류 프로젝트는 발표자료와 포스터를 통해 연구형 포트폴리오 흐름까지 연결할 수 있도록 별도 강조 영역을 마련했습니다.</p>
+              <div class="resource-links">
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1ItGyJHhtb9BGsOQPjDbDssW-JPiG63rA/edit">Conference Slides</a>
+                <a class="btn" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1nR7LO27r4QNYYnZKb1hAjyoUBlBsXybn/edit">Poster</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section card panel" id="backend">
+          <div class="section-head">
+            <div>
+              <h2>Backend Engineering Section</h2>
+              <p>이 영역은 추후 GitHub repository 기반으로 확장될 백엔드 프로젝트 전용 섹션입니다.</p>
+            </div>
+          </div>
+
+          <div class="backend-grid">
+            <article class="backend-card coming">
+              <span class="mini-eyebrow">Coming Next</span>
+              <h3>Java / Spring backend projects</h3>
+              <p>회원가입, 인증, CRUD, DB 설계, 계층형 구조, 트러블슈팅, 협업 흐름을 레포지토리 기반으로 추가할 수 있도록 분리된 카드형 레이아웃을 미리 구성했습니다.</p>
+            </article>
+            <article class="backend-card coming">
+              <span class="mini-eyebrow">Ready for GitHub links</span>
+              <h3>Service-oriented project expansion</h3>
+              <p>현재 Data & ML 섹션과 시각적으로 구분되도록 설계되어 있으며, 이후 Backend 섹션만 독립적으로 보강해도 전체 사이트 균형이 유지됩니다.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section card panel">
+          <div class="section-head">
+            <div>
+              <h2>Notes for the next revision</h2>
+              <p>지금 구조를 완성도 높게 만들기 위해 다음 자료가 들어오면 바로 강화할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <div class="two-column">
+            <div class="note-box">
+              <h3>이미 바로 교체 가능한 것</h3>
+              <ul>
+                <li>프로필 사진 업로드 시 KY 아바타를 실제 portrait 이미지로 즉시 교체</li>
+                <li>Backend GitHub 링크 수신 후 전용 프로젝트 카드와 기술 스택 추가</li>
+                <li>대표 썸네일이 확보되면 각 프로젝트 상단에 시각자료 배치</li>
+              </ul>
+            </div>
+            <div class="note-box">
+              <h3>추가 자료가 있으면 더 좋아지는 것</h3>
+              <ul>
+                <li>성과 지표(Accuracy, F1, RMSE, 개선율 등)를 카드에 넣어 정량성 강화</li>
+                <li>PDF/슬라이드에서 고른 핵심 페이지 이미지를 썸네일로 연결</li>
+                <li>프로젝트별 역할, 기간, 팀 규모를 넣어 채용용 정보 밀도 강화</li>
+              </ul>
+            </div>
           </div>
         </section>
       </section>
     </main>
 
     <footer>
-      <span>© 2026 DevLog. All rights reserved.</span>
-      <span>Designed for a static developer blog main page.</span>
+      <span>© 2026 Kim YongJun Portfolio</span>
+      <span>Built for GitHub Pages · Data Analysis / Machine Learning now, Backend next</span>
     </footer>
   </div>
+
+  <script>
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.project-card');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter;
+        chips.forEach((c) => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        cards.forEach((card) => {
+          const category = card.dataset.category || '';
+          const shouldShow = filter === 'all' || category.includes(filter);
+          card.classList.toggle('hidden-card', !shouldShow);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
